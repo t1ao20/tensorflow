@@ -41,6 +41,34 @@ to
 [announce@tensorflow.org](https://groups.google.com/a/tensorflow.org/forum/#!forum/announce).
 See all the [mailing lists](https://www.tensorflow.org/community/forums).
 
+## Quick Start Example
+
+Here’s a simple example to train a linear regression model using TensorFlow:
+
+```python
+import tensorflow as tf
+import numpy as np
+
+# Generate sample data
+x_train = np.linspace(0, 10, 100)
+y_train = 3 * x_train + 7 + np.random.randn(*x_train.shape) * 2
+
+# Build a simple linear regression model
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(1, input_shape=(1,))
+])
+
+# Compile the model
+model.compile(optimizer='sgd', loss='mean_squared_error')
+
+# Train the model
+model.fit(x_train, y_train, epochs=10)
+
+# Test the model
+test_data = np.array([5.0])
+print("Prediction for input 5.0:", model.predict(test_data))
+```
+
 ## Install
 
 See the [TensorFlow install guide](https://www.tensorflow.org/install) for the
